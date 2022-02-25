@@ -19,7 +19,7 @@ Files added:
 {
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
-  "typings": "dist/index.d.ts"
+  "typings": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/cjs/index.js",
