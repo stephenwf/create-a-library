@@ -28,12 +28,71 @@ Files added:
     }
   }
   "scripts": {
+    "start": "rollup -c --watch --dev",
     "build": "tsc -p . --declaration --emitDeclarationOnly && rollup -c",
     "prepublishOnly": "tsc -p . --declaration --emitDeclarationOnly && rollup -c",
     "test": "jest"
   }
 }
 
+```
+
+**rollup.config.js**
+```js
+import { createRollupConfig, createTypeConfig } from 'rollup-library-template';
+import pkg from './package.json';
+
+const IS_DEV = process.argv.indexOf('--dev') === -1;
+
+const globalUMDName = 'Kinematic';
+
+const baseConfig = {
+  filesize: IS_DEV,
+  minify: !IS_DEV,
+  extra: {
+    treeshake: true,
+  }
+};
+
+const external = pkg.dependencies || [];
+
+// Roll up configs
+export default [
+  createTypeConfig({
+    source: './.build/types/index.d.ts',
+  }),
+
+  // dist/index.umd.js
+  createRollupConfig({
+    ...baseConfig,
+    inlineDynamicImports: true,
+    input: './src/index.ts',
+    output: {
+      name: globalUMDName,
+      file: `dist/index.umd.js`,
+      format: 'umd',
+    },
+    nodeResolve: {
+      browser: true,
+    },
+  }),
+
+  // dist/esm/index.mjs
+  createRollupConfig({
+    ...baseConfig,
+    input: './src/index.ts',
+    distPreset: 'esm',
+    external,
+  }),
+
+  // dist/cjs/index.js
+  createRollupConfig({
+    ...baseConfig,
+    input: './src/index.ts',
+    distPreset: 'cjs',
+    external,
+  }),
+];
 ```
 
 **.prettierrc**
