@@ -91,16 +91,13 @@ Files added:
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "downlevelIteration": false,
-    "experimentalDecorators": true,
     "importHelpers": true,
     "skipLibCheck": true,
     "noEmitHelpers": true,
     "lib": [
-      "dom",
-      "es2020"
+      "DOM",
+      "ESNext"
     ],
-    "jsx": "react",
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
