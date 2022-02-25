@@ -45,8 +45,8 @@ Files added:
 }
 ```
 
-**eslintrc.js**
-```
+**eslintrc.json**
+```json
 {
     "root": true,
     "parser": "@typescript-eslint/parser",
@@ -85,7 +85,7 @@ Files added:
 
 
 **tsconfig.json**
-```
+```json
 {
   "compilerOptions": {
     "baseUrl": ".",
