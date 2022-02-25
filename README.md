@@ -7,7 +7,7 @@ yarn create a-library
 ## Steps run
 ```
 yarn init
-yarn add --dev prettier rollup typescript rollup-library-template ts-jest jest @types/jest @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-json eslint-plugin-prettier tslib
+yarn add --dev prettier rollup typescript rollup-library-template ts-jest jest @types/jest @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-json eslint-plugin-prettier tslib cross-env
 yarn ts-jest config:init
 ```
 
@@ -42,7 +42,7 @@ Files added:
 import { createRollupConfig, createTypeConfig } from 'rollup-library-template';
 import pkg from './package.json';
 
-const IS_DEV = process.argv.indexOf('--dev') === -1;
+const IS_DEV = process.env.NODE_ENV !== 'production';
 
 const globalUMDName = 'Kinematic';
 
