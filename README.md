@@ -1,7 +1,9 @@
 # Create a library
 
+**NOT YET PUBLISHED, BUT YOU CAN FOLLOW MANUALLY**
+
 ```
-yarn create a-library
+yarn create a-library [your-library-name]
 ```
 
 ## Steps run
@@ -12,11 +14,13 @@ yarn ts-jest config:init
 ```
 
 
-Files added:
+Files added/modified:
 
 **package.json**
-```json
+```json5
 {
+  // ... existing pkg ...
+  
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
   "typings": "dist/index.d.ts",
@@ -26,7 +30,7 @@ Files added:
       "import": "./dist/esm/index.mjs",
       "default": "./dist/index.umd.js"
     }
-  }
+  },
   "scripts": {
     "start": "rollup -c --watch --dev",
     "build": "tsc -p . --declaration --emitDeclarationOnly && rollup -c",
